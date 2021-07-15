@@ -18,12 +18,15 @@ export default function Home() {
   // Usa-se o "()" dentro do return  para obter a quebra de linha
   return (
     <main>
-      O que teremos nas boxes:
-
-      Imagem
-      Bem-vindo
-      Comunidades
-
+      <Box>
+        Imagem
+      </Box>
+      <Box>
+        Bem-vindo
+      </Box>
+      <Box>
+        Comunidades
+        </Box>
     </main>
   )
 }
