@@ -17,7 +17,20 @@ const GlobalStyle = createGlobalStyle`
     font-size: 20px;
     background-color: #D9E6F6;   
   }
+
+  #__next{
+    display:flex;
+    min-height:100vh;
+    flex-direction: column;
+  }
+
+  img{
+    max-width: 100%;
+    heigh: auto;
+    display: block;
+  }
 `
+
 
 const theme = {
   colors: {
