@@ -1,38 +1,51 @@
 
 import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
+// Importando componentes individualmente
+import { AlurakutMenu } from '../src/lib/aluraComm';
 
-/* const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-` */
+// Usa-se a inicial maiúscula para nomear componente
+// A "div" está sendo usada para as Boxes  
+// O CSS é usado entre crases
 
-// Inicial maiúscula porque se trata de um componente e não de uma <tag>
-// A "div" se trata da tag usada para criar o quadrado 
-// Tudo o que está entre crases será o CSS 
-
+function ProfileSidebar(propriedades){
+  console.log(propriedades)
+  return (
+    <Box>
+      {/* {} passar valor de variavel em JavaScript. O {} externo é do React para conseguir usar o JS dentro do HTML*/}
+        <img src={`https://github.com/${propriedades.githubUser}.png`} style={{borderRadius: '5px'}} />
+    </Box>
+  )
+}
 
 export default function Home() {
-  // Tudo o que é escrito no return será renderizado
-  // Usa-se o "()" dentro do return  para obter a quebra de linha
+  // Varivel de usuario
+  const userAny = 'irlenegaliza';
+  
   return (
+    // Usa-se o "()" dentro do return  para obter a quebra de linha
+    // Tudo o que é escrito no return será renderizado
+    <>
+    <AlurakutMenu/>
     <MainGrid>
-      {/* Chave: valor */}
-      <div>
-      <Box className="profileArea" style = {{ gridArea: 'profileArea'}}>
-        <img src="https://github.com/irlenegaliza.png" />
-      </Box>
+      { /* Chave: valor */ }
+      <div className="profileArea" style = {{ gridArea: 'profileArea'}} >
+        <ProfileSidebar githubUser={userAny}/>
       </div>
-      <div>
-      <Box className="welcomeArea" style= {{gridArea: 'welcomeArea'}}>
+      <div className="welcomeArea" style= {{gridArea: 'welcomeArea'}}>
+      <Box>
         Bem-vindo
       </Box>
       </div>
-      <div>
-      <Box className="profileRelationsArea" style = {{ gridArea: 'profileRelationsArea'}}> 
+      <div className="profileRelationsArea" style = {{ gridArea: 'profileRelationsArea'}}> 
+      <Box>
+        Pessoas da Comunidade
+      </Box>
+      <Box> 
         Comunidades
-        </Box>
-        </div>
+      </Box>
+      </div>
     </MainGrid>
+    </>
   )
 }
