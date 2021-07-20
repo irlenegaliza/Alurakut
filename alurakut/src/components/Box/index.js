@@ -20,7 +20,7 @@ const Box = styled.div `
   }
 
   .subTitle {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 20px;
   }
