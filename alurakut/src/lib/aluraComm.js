@@ -76,7 +76,7 @@ AlurakutMenu.Wrapper = styled.header`
       margin: auto;
     }
     a {
-      font-size: 18px;
+      font-size: 20px;
     }
     .boxLink {
       font-size: 18px;
@@ -119,7 +119,7 @@ AlurakutMenu.Wrapper = styled.header`
         display: flex;
       }
       a {
-        font-size: 12px;
+        font-size: 18px;
         color: white;
         padding: 10px 16px;
         position: relative;
@@ -147,7 +147,7 @@ AlurakutMenu.Wrapper = styled.header`
       background-position: 15px center;
       background-repeat: no-repeat;
       border-radius: 1000px;
-      font-size: 12px;
+      font-size: 13px;
       ::placeholder {
         color: #ffffff;
         opacity: 1;
@@ -283,13 +283,14 @@ export function OrkutNostalgicIconSet(props) {
   )
 }
 OrkutNostalgicIconSet.List = styled.ul`
-  margin-top: 32px;
+  margin-top: 55px;
   list-style: none;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-left: -35px;
   li {
-    font-size: 12px;
+    font-size: 13px;
     color: #5A5A5A;
     display: grid;
     grid-template-areas:
@@ -309,7 +310,7 @@ OrkutNostalgicIconSet.List = styled.ul`
       align-items: center;
       justify-content: flex-start;
       .OrkutNostalgicIconSet__iconSample {
-        margin-right: 7px;
+        margin-right: 8px;
       }
     }
   }

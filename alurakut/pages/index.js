@@ -50,7 +50,7 @@ export default function Home() {
         { /*  ============= SESSÃO BEM-VINDO ===================*/ }
       <Box>
           <h1 className="title">
-            Bem-vindo(a)
+            Bem-vindo(a), {userAny}.
           </h1>
         <OrkutNostalgicIconSet/>
       </Box>
@@ -60,7 +60,7 @@ export default function Home() {
       <div className="profileRelationsArea" style = {{ gridArea: 'profileRelationsArea'}}> 
         <ProfileRelationsBoxWrapper>
           <h2 className="smallTitle">
-            Pessoas da Comunidade ({pessoasFavoritas.length})
+            Meus amigos(as) ({pessoasFavoritas.length})
           </h2>
 
             {/* O Map devolve algo transformado */}

@@ -7,7 +7,7 @@ const Box = styled.div `
 
   margin-bottom: 10px;
   .boxLink {
-    font-size: 14px;
+    font-size: 18px;
     color: #2E7BB4;
     text-decoration: none;
     font-weight: 800;
@@ -20,7 +20,7 @@ const Box = styled.div `
   }
 
   .subTitle {
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 400;
     margin-bottom: 20px;
   }
