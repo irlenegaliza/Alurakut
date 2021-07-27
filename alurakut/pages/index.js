@@ -1,4 +1,4 @@
-
+import React from 'react';
 import Box from '../src/components/Box'
 import MainGrid from '../src/components/MainGrid'
 // Importando componentes individualmente
@@ -15,7 +15,7 @@ import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations';
 function ProfileSidebar(propriedades){
 
   return (
-    <Box>
+    <Box as="aside">
       {/* {} passar valor de variavel em JavaScript. O {} externo é do React para conseguir usar o JS dentro do HTML*/}
         <img src={`https://github.com/${propriedades.githubUser}.png`} style={{borderRadius: '5px'}} />
         <hr/>
@@ -33,10 +33,17 @@ function ProfileSidebar(propriedades){
 }
 
 export default function Home() {
- 
+
+ // Irá conter o estágio inicial
+  const [comunidades, setComunidades] = React.useState([{
+    id: '',
+    title: 'Eu Odeio acordar cedo',
+    image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'
+  }]);
+
   // Variveis
   const userAny = 'irlenegaliza';
-  const comunidades = ['Alurakut'];
+  //const comunidades = ['Alurakut'];
   const pessoasFavoritas = [
     'lfdgaliza',  
     'jaquelindacostabotelho', 
@@ -70,9 +77,23 @@ export default function Home() {
       <Box>
         <h3 className="subTitle">O que você deseja fazer?</h3>
         <form onSubmit={function handleCriaComunidade(e){
-         e.preventDefault();
-          
-          comunidades.push('Alura Stars');
+          e.preventDefault();
+          // Irá trazer os dados do formulário
+          const dadosDoForm = new FormData(e.target); 
+
+          console.log('Campo:', dadosDoForm.get('title'));
+          console.log('Imagem:', dadosDoForm.get('image'));
+
+          //Objeto createComunidade
+          const createComunidade = {
+            id: new Date().toISOString(),
+            title: dadosDoForm.get('title'),
+            image: dadosDoForm.get('image'),
+          }
+
+          // Comunidades.push('Alura Stars');
+          const comunidadesAtualizadas = [...comunidades, createComunidade];
+          setComunidades(comunidadesAtualizadas);
         
         }}>
           <div>
@@ -99,12 +120,18 @@ export default function Home() {
       </div>
       <div className="profileRelationsArea" style = {{ gridArea: 'profileRelationsArea'}}> 
         <ProfileRelationsBoxWrapper>
+          <h2 className="smallTitle">
+            Meus Amigos(as): ({pessoasFavoritas.length})
+            <hr/>
+          </h2>
+
+            {/* O Map devolve algo transformado */}
           <ul>
-            {comunidades.map((itemAtual) => {
+            {pessoasFavoritas.map((itemAtual) => {
               return (
-                <li>
-                  <a href={`/users/${itemAtual}`} key={itemAtual}>
-                    <img src={`http://placehold.it/300x300`} />
+                <li  key={itemAtual}>
+                  <a href={`/users/${itemAtual}`}>
+                    <img src={`https://github.com/${itemAtual}.png`} />
                     <span>{itemAtual}</span>
                   </a>
                 </li>
@@ -114,19 +141,18 @@ export default function Home() {
         </ProfileRelationsBoxWrapper>
 
         <ProfileRelationsBoxWrapper>
-          <h2 className="smallTitle">
-            Pessoas da comunidade ({pessoasFavoritas.length})
+        <h2 className="smallTitle">
+            Minhas Comunidades: ({comunidades.length})
             <hr/>
           </h2>
 
-            {/* O Map devolve algo transformado */}
           <ul>
-            {pessoasFavoritas.map((itemAtual) => {
+            {comunidades.map((itemAtual) => {
               return (
-                <li>
-                  <a href={`/users/${itemAtual}`} key={itemAtual}>
-                    <img src={`https://github.com/${itemAtual}.png`} />
-                    <span>{itemAtual}</span>
+                <li key={itemAtual.id}>
+                  <a href={`/users/${itemAtual.title}`}>
+                    <img src={itemAtual.image} />
+                    <span>{itemAtual.title}</span>
                   </a>
                 </li>
                )
